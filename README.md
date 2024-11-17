@@ -56,7 +56,7 @@
 ## 如何避免使用 key 属性
 
 - 这个组件的唯一作用就是免去子组件使用 key 属性，实际上是骗过 react，我这个就是确定的唯一的大小的数组，这个也确实能够确定， -- 因为 props.children 存在就是在 jsx 里面写的，那么就是固定的 -- const Warp:FC=(props)=><> {props.children}</> -- 动态子组件 react 在编译时根本无法知道运行时会有几个子组件，所以需要 key 来支持 -- 如果没有 Wrap，就要返回一个数组， [< div key={1}>1<\/div>,< div key={2}>2<\/div>] , \_\_ 在渲染的时候 react 会警告，没有 key 的话会认为是动态产生的
-- [warp](src/components/Warp.tsx)
+- [warp](src/components/Wrap/index.tsx)
 
 ## Hooks 的优势
 
