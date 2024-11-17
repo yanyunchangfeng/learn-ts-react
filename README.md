@@ -15,12 +15,12 @@
 
 ## 对传统 React 编程的影响
 
-1. 生命周期 函数如何映射到 Hooks？ [hookLifeCycle](src/components/LifeCycle/index.tsx) | [getDerivedStateFromProps](src/components/getDerivedStateFromProps.tsx)  
+1. 生命周期 函数如何映射到 Hooks？ [hookLifeCycle](src/components/LifeCycle/index.tsx) | [getDerivedStateFromProps](src/components/GetDerivedStateFromProps/index.tsx)  
    -- shouldComponentUpdate 对应的就是 memo 组件了
 2. 类实例成员变量如何映射到 Hooks？ [ref](src/components/LikeButton.tsx) -- ref 和直接一个对象有什么区别 ref 在所有的 render 当中都保持着唯一的引用 因此对 ref 的取值赋值 拿到的都是最终的状态
 3. Hooks 中如何获取历史的 props 和 state？[Ref&useEffect](src/components/Counter.tsx)  
    -- 其实就是利用 useRef 的特性
-4. 如何强制更新一个 Hooks 组件？[创建一个不参与渲染的 state](src/components/Counter.tsx)  
+4. 如何强制更新一个 Hooks 组件？[创建一个不参与渲染的 state](src/hooks/useUpdate.ts)  
    -- forceUpdate 就是重新 render。有些变量不在 state 上，当时你又想达到这个变量更新的时候，刷新 render；或者 state 里的某个变量层次太深，更新的时候没有自动触发 render。这些时候都可以手动调用 forceUpdate 自动触发 render
 
 ## useMemo 与 useEffect 的区别
