@@ -15,13 +15,14 @@
 
 ## 对传统 React 编程的影响
 
-1. 生命周期 函数如何映射到 Hooks？ [hookLifeCycle](src/components/LifeCycle/index.tsx) | [getDerivedStateFromProps](src/components/GetDerivedStateFromProps/index.tsx)  
-   -- shouldComponentUpdate 对应的就是 memo 组件了
-2. 类实例成员变量如何映射到 Hooks？ [ref](src/components/LikeButton.tsx) -- ref 和直接一个对象有什么区别 ref 在所有的 render 当中都保持着唯一的引用 因此对 ref 的取值赋值 拿到的都是最终的状态
-3. Hooks 中如何获取历史的 props 和 state？[Ref&useEffect](src/components/Counter.tsx)  
-   -- 其实就是利用 useRef 的特性
-4. 如何强制更新一个 Hooks 组件？[创建一个不参与渲染的 state](src/hooks/useUpdate.ts)  
-   -- forceUpdate 就是重新 render。有些变量不在 state 上，当时你又想达到这个变量更新的时候，刷新 render；或者 state 里的某个变量层次太深，更新的时候没有自动触发 render。这些时候都可以手动调用 forceUpdate 自动触发 render
+1. 生命周期 函数如何映射到 Hooks？ [hookLifeCycle](src/components/LifeCycle/index.tsx) | [getDerivedStateFromProps](src/components/GetDerivedStateFromProps/index.tsx)
+   - shouldComponentUpdate 对应的就是 memo 组件了
+2. 类实例成员变量如何映射到 Hooks？
+   - ref 和直接一个对象有什么区别 ref 在所有的 render 当中都保持着唯一的引用 因此对 ref 的取值赋值 拿到的都是最终的状态
+3. Hooks 中如何获取历史的 props 和 state？[useRef & useEffect](src/components/Counter/index.tsx)
+   - 其实就是利用 useRef 的特性
+4. 如何强制更新一个 Hooks 组件？[创建一个不参与渲染的 state](src/hooks/useUpdate.ts)
+   - forceUpdate 就是重新 render。有些变量不在 state 上，当时你又想达到这个变量更新的时候，刷新 render；或者 state 里的某个变量层次太深，更新的时候没有自动触发 render。这些时候都可以手动调用 forceUpdate 自动触发 render
 
 ## useMemo 与 useEffect 的区别
 
@@ -33,7 +34,6 @@
 - memo 函数针对的是一个组件的渲染是否重复执行 而 useMemo 则是定义了一段函数逻辑是否重复执行
 - useMemo ()=>{}
 - memo(< Foo/>)
-- [memo 和 useMemo](src/components/memo.tsx)
 
 ## useMemo 和 useCallback 的区别
 
@@ -42,7 +42,7 @@
 - 使用 useCallback 确实会创建新的函数，但是不一定会被返回，换句话说很有可能创建的函数就直接抛弃不用了
 - useCallback 解决的问题是传入子组件的参数过多变化，导致子组件过多渲染的问题
 - useMemo 依赖发生变化一定会重新执行，但不能肯定依赖不发生变化就一定不重新执行，就是说它也可能重新执行
-- [useMemo 和 useCallback](src/App.tsx)
+- [useMemo](src/hooks/useMemo.ts) | [useCallback](src/hooks/useCallback.ts)
 
 ## 函数组件的局限性
 
@@ -65,11 +65,6 @@
 1. 方便复用状态逻辑 Custom Hooks
 2. 副作用的关注点分离
 3. 函数组件无 this 问题
-
-## npx 小知识
-
-1. 避免安装全局模块 npx 可以运行它避免全局安装 将安装包下载到临时目录 使用以后再删除 以后再执行命令会重新下载
-2. 调用项目内部安装的模块 dev 中的 mocha 测试工具想要直接使用 直接通过 npx 调用即可每当执行 npm run 的时候 会创建一个 sheel 在这个 sheel 里执行指定的脚本命令 比较特别的是 npm run 会将 node-module/.bin/子目录加入 path 变量 执行结束后再将 path 变量恢复原样
 
 ## 用法
 
