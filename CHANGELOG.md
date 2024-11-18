@@ -1,3 +1,9 @@
+# [1.2.0-rc.1](https://github.com/yanyunchangfeng/learn-ts-react/compare/v1.1.0...v1.2.0-rc.1) (2024-11-18)
+
+### Features
+
+- add forwardRef ([c763755](https://github.com/yanyunchangfeng/learn-ts-react/commit/c76375568703dc649c3b20271a8cb35b155af556))
+
 # [1.1.0](https://github.com/yanyunchangfeng/learn-ts-react/compare/v1.0.0...v1.1.0) (2024-11-18)
 
 ### Features
