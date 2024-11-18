@@ -19,8 +19,10 @@
    - shouldComponentUpdate 对应的就是 memo 组件了
 2. 类实例成员变量如何映射到 Hooks？
    - ref 和直接一个对象有什么区别 ref 在所有的 render 当中都保持着唯一的引用 因此对 ref 的取值赋值 拿到的都是最终的状态
+   - [useRef](src/hooks/useRef.ts)
 3. Hooks 中如何获取历史的 props 和 state？[useRef & useEffect](src/components/Counter/index.tsx)
    - 其实就是利用 useRef 的特性
+   - [useEffect](src/hooks/useEffect.ts)
 4. 如何强制更新一个 Hooks 组件？[创建一个不参与渲染的 state](src/hooks/useUpdate.ts)
    - forceUpdate 就是重新 render。有些变量不在 state 上，当时你又想达到这个变量更新的时候，刷新 render；或者 state 里的某个变量层次太深，更新的时候没有自动触发 render。这些时候都可以手动调用 forceUpdate 自动触发 render
 
@@ -57,6 +59,10 @@
 
 - 这个组件的唯一作用就是免去子组件使用 key 属性，实际上是骗过 react，我这个就是确定的唯一的大小的数组，这个也确实能够确定， -- 因为 props.children 存在就是在 jsx 里面写的，那么就是固定的 -- const Warp:FC=(props)=><> {props.children}</> -- 动态子组件 react 在编译时根本无法知道运行时会有几个子组件，所以需要 key 来支持 -- 如果没有 Wrap，就要返回一个数组， [< div key={1}>1<\/div>,< div key={2}>2<\/div>] , \_\_ 在渲染的时候 react 会警告，没有 key 的话会认为是动态产生的
 - [warp](src/components/Wrap/index.tsx)
+
+## React.forwardRef
+
+- [forwardRef](src/hooks/forwardRef.ts)
 
 ## Hooks 的优势
 
